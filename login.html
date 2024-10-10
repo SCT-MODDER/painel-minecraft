@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Minecraft - Login</title>
+
+    <!-- Fonte personalizada do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #0c0c0c, #1a1a1a);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        /* Animação do fundo gradiente */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Container da tela de login com bordas RGB */
+        .login-container {
+            position: relative;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            width: 350px;
+            text-align: center;
+            color: white;
+            border: 2px solid transparent;
+            animation: rgb-border 5s infinite alternate;
+        }
+
+        /* Efeito RGB nas bordas */
+        @keyframes rgb-border {
+            0% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.8); }
+            25% { box-shadow: 0 0 20px rgba(255, 0, 128, 0.8); }
+            50% { box-shadow: 0 0 20px rgba(0, 255, 0, 0.8); }
+            75% { box-shadow: 0 0 20px rgba(0, 128, 255, 0.8); }
+            100% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.8); }
+        }
+
+        /* Título estilizado */
+        h2 {
+            margin: 0;
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #f53b57;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            font-weight: 600;
+        }
+
+        /* Estilo dos inputs */
+        .login-container input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background-color: #333;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container input::placeholder {
+            color: #bbb;
+        }
+
+        .login-container input:focus {
+            border: 1px solid #f53b57;
+            box-shadow: 0 0 8px #f53b57;
+        }
+
+        /* Botão estilizado */
+        .login-container button {
+            width: 90%;
+            padding: 12px;
+            margin-top: 15px;
+            background: linear-gradient(135deg, #f53b57, #ff5e57);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Animação ao passar o mouse no botão */
+        .login-container button:hover {
+            background: linear-gradient(135deg, #ff4e50, #ff6e6e);
+            transform: scale(1.05);
+        }
+
+        /* Pequeno texto abaixo do login */
+        .login-container p {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 15px;
+        }
+
+        .login-container p a {
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .login-container p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Painel Minecraft</h2>
+        <input type="text" id="username" placeholder="Usuário">
+        <input type="password" id="password" placeholder="Senha">
+        <button onclick="login()">Entrar</button>
+        <p>Esqueceu sua senha? <a href="#">Clique aqui</a></p>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            // Passar os valores de usuário e senha para o Android
+            Android.onLogin(username, password);
+        }
+    </script>
+</body>
+</html>
